@@ -22,7 +22,7 @@ export const ContainerItens = styled.main`
   padding: 0 4em;
   img {
     position: relative;
-    top: -5em;
+    top: 0em;
   }
   .btnEye {
     border: none;
@@ -30,17 +30,17 @@ export const ContainerItens = styled.main`
     height: 25px;
     width: 25px;
     position: relative;
-    left: 12em;
+    left: 13.7em;
     font-size: 1.2rem;
     color: #ffffff;
-    bottom: 5.3em;
+    bottom: ${props => (props.error ? '7.67em' : '6.5em')};
   }
 `
 export const P = styled.p`
   color: #ffffff;
   text-align: center;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 28px;
 `
 export const Label = styled.p`
@@ -57,7 +57,7 @@ export const Input = styled.input`
   background: #ffffff;
   box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
   border-radius: 5px;
-  margin: 0 0 5em;
+  margin: 0 0 3em;
   border: ${props => (props.validIpnut ? '2px solid #CC1717;' : 'none')};
   padding-left: 10px;
 `
@@ -65,7 +65,7 @@ export const Input = styled.input`
 export const SignInParag = styled.p`
   color: #ffffff;
   position: relative;
-  top: 4em;
+  top: -1em;
   margin: 0 0 0 10px;
   cursor: pointer;
   font-weight: 400;
@@ -81,5 +81,5 @@ export const MessageError = styled.p`
   line-height: 16px;
   color: #cc1717;
   position: relative;
-  top: -35px;
+  top: -25px;
 `

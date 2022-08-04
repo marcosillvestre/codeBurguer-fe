@@ -11,7 +11,7 @@
         "prettier"
     ],
     "parserOptions": {
-        "ecmaFeatures": {
+        "ecmaFeatures": { 
             "jsx": true
         },
         "ecmaVersion": "latest",
@@ -24,6 +24,8 @@
         "prettier"
     ],
     "rules": {
+        "no-constant-condition": 0,
+        "no-template-curly-in-string" : 0,
         "prettier/prettier": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
