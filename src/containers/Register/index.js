@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -143,7 +144,7 @@ function Login() {
         </button>
 
         <SignInParag style={{ marginTop: '15px' }}>
-          Não possui conta ? <a>Sign in</a>
+          Já possui conta ? <Link to={'/login'} style={{ color: 'white' }}>Sign in</Link>
         </SignInParag>
       </ContainerItens>
     </Container>

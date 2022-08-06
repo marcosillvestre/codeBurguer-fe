@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -18,14 +19,15 @@ import {
   P,
   Label,
   Input,
+
   MessageError,
   SignInParag
+
 } from './styles'
 
 function Login() {
 
-  const users = useUser()
-  console.log(users)
+  const { putInfo } = useUser()
 
   const [eyeChange, setEyeChange] = useState(true)
   const handlebutton = () => {
@@ -52,23 +54,24 @@ function Login() {
   } = useForm({
     resolver: yupResolver(schema)
   })
-  const onSubmit = async data => {
-    const res = await toast.promise(
+  const onSubmit = async User => {
+    const { data } = await toast.promise(
       api.post('sessions', {
-        email: data.Email,
-        password: data.password
+        email: User.Email,
+        password: User.password
       }),
       {
         pending: 'Conferindo os dados',
         success: 'Login efetuado com sucesso',
         error: 'Alguma coisa deu errado, confira seus dados'
       }
+
+
     )
 
 
+    putInfo({ data })
 
-
-    console.log(res)
   }
 
   return (
@@ -110,7 +113,7 @@ function Login() {
           )}
         </button>
         <SignInParag>
-          Não possui conta ? <a>Sign Up</a>
+          Não possui conta ? <Link to={'/cadastro'} style={{ color: 'white' }}>Sign Up</Link>
         </SignInParag>
       </ContainerItens>
     </Container>

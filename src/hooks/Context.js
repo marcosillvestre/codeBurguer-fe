@@ -1,15 +1,36 @@
 /* eslint-disable prettier/prettier */
-import React, { createContext, useContext } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 
 import Proptypes from 'prop-types'
 const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
-    const user = { name: 'marcos', age: 20 }
+    const [userData, setUserData] = useState()
     // dados pra aplicação
+    const putInfo = async (userInfos) => {
+        setUserData(userInfos)
+
+        await localStorage.setItem('codeBurguer:userData', JSON.stringify(userInfos))
+    }
+
+
+    useEffect(() => {
+
+        const loadUserData = async () => {
+            const clientInfo = await localStorage.getItem('codeBurguer:userData')
+
+            if (clientInfo) {
+                setUserData(JSON.parse(clientInfo))
+            }
+
+        }
+        loadUserData()
+    }, [])
+
+
 
     return (
-        <UserContext.Provider value={{ user }}>
+        <UserContext.Provider value={{ putInfo, userData }}>
 
             {children}
 
