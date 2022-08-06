@@ -10,6 +10,7 @@ import * as yup from 'yup'
 import codeBurguer from '../../assets/burger2.svg'
 import burguer from '../../assets/cdBurguer.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/Context';
 import api from '../../services/api'
 import {
   Container,
@@ -22,6 +23,10 @@ import {
 } from './styles'
 
 function Login() {
+
+  const users = useUser()
+  console.log(users)
+
   const [eyeChange, setEyeChange] = useState(true)
   const handlebutton = () => {
     setEyeChange(state => !state)
