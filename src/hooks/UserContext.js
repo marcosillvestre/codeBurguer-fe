@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 
 import Proptypes from 'prop-types'
+
 const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {

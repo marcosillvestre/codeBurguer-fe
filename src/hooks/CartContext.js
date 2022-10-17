@@ -1,0 +1,68 @@
+/* eslint-disable prettier/prettier */
+import React, { createContext, useContext, useState, useEffect } from "react"
+
+import Proptypes from 'prop-types'
+
+const CartContext = createContext({})
+
+export const CartProvider = ({ children }) => {
+    const [cartData, setCartData] = useState([])
+    // dados pra aplicação
+
+    const putInfoInCart = async product => {
+        const cartIndex = cartData.findIndex(prod => prod.id === product.id)
+        let newCart = []
+
+        if (cartIndex >= 0) {
+            newCart = cartData
+            newCart[cartIndex].quantity =
+                newCart[cartIndex].quantity + 1
+
+            setCartData(newCart)
+        }
+        else {
+            product.quantity = 1
+            newCart = [...cartData, product]
+            setCartData(newCart)
+        }
+        await localStorage.setItem('codeBurguer:cartInfo', JSON.stringify(newCart))
+
+    }
+
+
+    useEffect(() => {
+
+        const loadUserData = async () => {
+            const clientInfo = await localStorage.getItem('codeBurguer:cartInfo')
+
+            if (clientInfo) {
+                setCartData(JSON.parse(clientInfo))
+            }
+
+        }
+        loadUserData()
+    }, [])
+
+
+
+    return (
+        <CartContext.Provider value={{ putInfoInCart, cartData }}>
+
+            {children}
+
+        </CartContext.Provider>
+    )
+}
+
+export const useCart = () => {
+    const context = useContext(CartContext)
+
+    if (!context) {
+        throw new Error("Cart most be used with UserContext")
+    }
+
+    return context
+}
+CartProvider.propTypes = {
+    children: Proptypes.node
+}

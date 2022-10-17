@@ -10,7 +10,7 @@ import * as yup from 'yup'
 
 import codeBurguer from '../../assets/burger2.svg'
 import logBurguer from '../../assets/signUpbg.svg'
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import api from '../../services/api'
 import {
   Container,
@@ -22,7 +22,7 @@ import {
   SignInParag
 } from './styles'
 
-function Login() {
+export function Register() {
   const [eyeChange, setEyeChange] = useState(false)
   const handlebutton = () => {
     setEyeChange(state => !state)
@@ -151,4 +151,3 @@ function Login() {
   )
 }
 
-export default Login

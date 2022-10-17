@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState, } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -10,8 +10,8 @@ import * as yup from 'yup'
 
 import codeBurguer from '../../assets/burger2.svg'
 import burguer from '../../assets/cdBurguer.svg'
-import Button from '../../components/Button'
-import { useUser } from '../../hooks/Context';
+import { Button } from '../../components'
+import { useUser } from '../../hooks/UserContext';
 import api from '../../services/api'
 import {
   Container,
@@ -19,17 +19,18 @@ import {
   P,
   Label,
   Input,
-
   MessageError,
   SignInParag
 
 } from './styles'
 
-function Login() {
+export function Login() {
+
+  const history = useHistory()
 
   const { putInfo } = useUser()
 
-  const [eyeChange, setEyeChange] = useState(true)
+  const [eyeChange, setEyeChange] = useState(false)
   const handlebutton = () => {
     setEyeChange(state => !state)
   }
@@ -71,6 +72,10 @@ function Login() {
 
 
     putInfo({ data })
+    setInterval(() => {
+      history.push('/')
+
+    }, 2000);
 
   }
 
@@ -120,4 +125,3 @@ function Login() {
   )
 }
 
-export default Login
