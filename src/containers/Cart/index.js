@@ -3,8 +3,8 @@ import React, { } from 'react'
 import { } from 'react-router-dom'
 
 import CartPage from '../../assets/cartBg.svg'
-import { ContainerCart } from '../../components'
-import { Container, CartLogo } from './styles'
+import { ContainerCart, ResumeCart } from '../../components'
+import { Container, CartLogo, Wrapper } from './styles'
 
 
 export function Cart() {
@@ -13,7 +13,10 @@ export function Cart() {
     return (
         <Container>
             <CartLogo src={CartPage} />
-            <ContainerCart />
+            <Wrapper>
+                <ContainerCart />
+                <ResumeCart />
+            </Wrapper>
         </Container>
     )
 }

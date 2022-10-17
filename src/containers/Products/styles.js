@@ -32,6 +32,10 @@ export const CategoryButton = styled.button`
     background: none ;
     color: ${props => (props.isActivated ? '#9758A6' : '#9A9A9D')};
 
+    &:hover{
+        color: #9758A6;
+    }
+
 `
 
 export const ContainerProduct = styled.div`

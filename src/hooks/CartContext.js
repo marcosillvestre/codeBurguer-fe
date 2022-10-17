@@ -9,6 +9,15 @@ export const CartProvider = ({ children }) => {
     const [cartData, setCartData] = useState([])
     // dados pra aplicação
 
+    const updateLocalStorage = async product => {
+        await localStorage.setItem('codeBurguer:cartInfo', JSON.stringify(product))
+    }
+
+
+
+
+
+
     const putInfoInCart = async product => {
         const cartIndex = cartData.findIndex(prod => prod.id === product.id)
         let newCart = []
@@ -25,10 +34,42 @@ export const CartProvider = ({ children }) => {
             newCart = [...cartData, product]
             setCartData(newCart)
         }
-        await localStorage.setItem('codeBurguer:cartInfo', JSON.stringify(newCart))
+        await updateLocalStorage(newCart)
 
     }
 
+    const increaseCart = async prodId => {
+        const newCart = cartData.map(product => {
+            return product.id === prodId ? { ...product, quantity: product.quantity + 1 } : product
+
+        })
+        setCartData(newCart)
+        await updateLocalStorage(newCart)
+
+    }
+
+    const removeCart = async productId => {
+        const cartIndex = cartData.filter(pd => pd.id !== productId)
+        setCartData(cartIndex)
+        await updateLocalStorage(cartIndex)
+
+    }
+
+    const decreaseCart = async productId => {
+        const cartIndex = cartData.findIndex(pd => pd.id === productId)
+
+        if (cartData[cartIndex].quantity > 1) {
+            const newQuantity = cartData.map(product => {
+                return product.id === productId ? { ...product, quantity: product.quantity - 1 } : product
+
+            })
+            setCartData(newQuantity)
+            await updateLocalStorage(newQuantity)
+        } else {
+            removeCart(productId)
+        }
+
+    }
 
     useEffect(() => {
 
@@ -46,7 +87,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ putInfoInCart, cartData }}>
+        <CartContext.Provider value={{ putInfoInCart, cartData, increaseCart, decreaseCart }}>
 
             {children}
 

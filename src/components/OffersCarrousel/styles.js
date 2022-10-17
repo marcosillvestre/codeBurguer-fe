@@ -10,7 +10,8 @@ export const Container = styled.div`
     gap: 20px;
     align-items: center ;
     background-color: #ffffff; 
-    padding: 20px 10px ;
+        padding: 20px 80px ;
+
 
     .rec.rec-arrow {
         color:  #ffffff ;

@@ -12,6 +12,7 @@ export function Home() {
 
     return (
         <Container>
+
             <HomeLogo src={homePage} />
             <CategoryCarrousel />
             <OfferCarrousel />

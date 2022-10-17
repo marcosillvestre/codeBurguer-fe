@@ -14,6 +14,10 @@ export const UserProvider = ({ children }) => {
         await localStorage.setItem('codeBurguer:userData', JSON.stringify(userInfos))
     }
 
+    const logOut = async () => {
+        await localStorage.removeItem('codeBurguer:userData')
+    }
+
 
     useEffect(() => {
 
@@ -30,8 +34,10 @@ export const UserProvider = ({ children }) => {
 
 
 
+
+
     return (
-        <UserContext.Provider value={{ putInfo, userData }}>
+        <UserContext.Provider value={{ putInfo, userData, logOut }}>
 
             {children}
 

@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 
 import { useCart } from '../../hooks/CartContext'
 import formatCurrency from '../../utils/FormatedCurrency'
-import { Container, Header, CartContainer, Img } from './styles'
+import { Container, Header, CartContainer, Img, EmptyCart } from './styles'
 
 export function ContainerCart() {
 
-    const { cartData } = useCart()
+    const { cartData, increaseCart, decreaseCart } = useCart()
 
 
     console.log(cartData)
@@ -28,15 +28,25 @@ export function ContainerCart() {
                 <p>Total</p>
             </Header>
 
-            {cartData && cartData.map(product => (
-                <CartContainer key={product.id}>
-                    <Img src={product.url} alt='imagem do produto' />
-                    <p>{product.name}</p>
-                    <p>{product.formatedValue}</p>
-                    <p>{product.quantity}</p>
-                    <p>{formatCurrency(product.price * product.quantity)} </p>
-                </CartContainer>
-            ))}
+            {cartData && cartData.length > 0 ?
+                cartData.map(product => (
+                    <CartContainer key={product.id}>
+                        <Img src={product.url} alt='imagem do produto' />
+                        <p>{product.name}</p>
+                        <p>{product.formatedValue}</p>
+                        <div className='quantity'>
+                            <button onClick={() => decreaseCart(product.id)}>-</button>
+                            <p>{product.quantity}</p>
+                            <button onClick={() => increaseCart(product.id)}>+</button>
+
+                        </div>
+                        <p>{formatCurrency(product.price * product.quantity)} </p>
+                    </CartContainer>
+                ))
+                : <EmptyCart>
+                    Carrinho vazio
+                </EmptyCart>
+            }
 
 
         </Container>

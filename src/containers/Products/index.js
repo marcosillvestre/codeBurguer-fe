@@ -15,11 +15,11 @@ export function Products() {
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState(0)
 
+    console.log(categories)
 
     useEffect(() => {
         async function loadCategory() {
             const { data } = await api.get('categories')
-            console.log(data)
 
             const newCategories = [{ id: 0, name: 'Todas' }, ...data]
 
@@ -29,7 +29,6 @@ export function Products() {
 
         async function loadProduct() {
             const { data: allProducts } = await api.get('products')
-            console.log(allProducts)
             const formatedPriceProducts = allProducts.map(offer => {
                 return { ...offer, formatedValue: format(offer.price) }
             })
@@ -58,6 +57,7 @@ export function Products() {
 
     return (
         <Container>
+
             <ProductsLogo src={ProductsImage} />
             <CategoryNav>
                 {categories &&
