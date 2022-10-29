@@ -63,7 +63,7 @@ export function Register() {
         password: data.password,
         passwordConfirm: data.passwordConfirm
       }, { validateStatus: () => true })
-      console.log(status)
+      // console.log(status)
 
       if (status === 200 || status === 201) {
         toast.success('Cadastro efetuado com sucesso')
@@ -82,7 +82,7 @@ export function Register() {
 
 
   }
-  console.log(errors)
+  // console.log(errors)
 
   return (
     <Container>

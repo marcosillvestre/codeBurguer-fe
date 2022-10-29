@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+import { Link } from 'react-router-dom'
+
 import styled from "styled-components";
 
 export const CategoryLogo = styled.img`
@@ -41,7 +43,7 @@ export const CategoryImage = styled.img`
     width: 180px ;
 
 `
-export const CategoryButton = styled.button`
+export const CategoryButton = styled(Link)`
 
     width: 180px;
     height: 50px;
@@ -50,6 +52,11 @@ export const CategoryButton = styled.button`
     border-radius: 8px;
     border: none ;
     color: #ffffff ;
+    text-decoration: none;
+    display: flex;
+    justify-content: center ;
+    align-items: center ;
+
 
 
     &:hover{

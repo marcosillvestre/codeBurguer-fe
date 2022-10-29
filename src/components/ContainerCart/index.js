@@ -12,9 +12,8 @@ export function ContainerCart() {
     const { cartData, increaseCart, decreaseCart } = useCart()
 
 
-    console.log(cartData)
 
-
+    // console.log(cartData)
 
     return (
 

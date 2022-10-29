@@ -15,7 +15,7 @@ export function ResumeCart() {
     const [finalPrice, setFinalprice] = useState(0)
     const [deliverTax] = useState(5)
 
-    const { cartData } = useCart()
+    const { cartData } = useCart()      
 
 
     useEffect(() => {

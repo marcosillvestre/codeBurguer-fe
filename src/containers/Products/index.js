@@ -2,27 +2,34 @@
 import React, { useEffect, useState } from 'react'
 import { } from 'react-router-dom'
 
-import ProductsImage from '../../assets/Products.svg'
+import PropTypes from 'prop-types'
+
+import ProductsImage from '../../assets/products-min.png'
 import { CardProduct } from '../../components'
 import api from '../../services/api'
 import format from '../../utils/FormatedCurrency'
 import { Container, ProductsLogo, CategoryNav, CategoryButton, ContainerProduct } from './styles'
 
 
-export function Products() {
+export function Products({ location: { state } }) {
+
+    let categoryId = 0
+    if (state?.categoryId) {
+        categoryId = state.categoryId
+    }
+
     const [filteredProducts, setFilteredProducts] = useState([])
     const [categories, setCategories] = useState([])
     const [products, setProducts] = useState([])
-    const [activeCategory, setActiveCategory] = useState(0)
+    const [activeCategory, setActiveCategory] = useState(categoryId)
 
-    console.log(categories)
+    // console.log(categories)
 
     useEffect(() => {
         async function loadCategory() {
             const { data } = await api.get('categories')
 
             const newCategories = [{ id: 0, name: 'Todas' }, ...data]
-
 
             setCategories(newCategories)
         }
@@ -34,10 +41,14 @@ export function Products() {
             })
 
             setProducts(formatedPriceProducts)
+
         }
+
         loadProduct()
         loadCategory()
     }, [])
+
+
 
     useEffect(() => {
 
@@ -51,8 +62,7 @@ export function Products() {
 
             setFilteredProducts(newFIlteredProducts)
         }
-    }, [products, activeCategory])
-
+    }, [activeCategory, products])
 
 
     return (
@@ -93,3 +103,8 @@ export function Products() {
 }
 
 
+
+
+Products.propTypes = {
+    location: PropTypes.object
+}
