@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import cart from '../../assets/cart.svg'
@@ -10,7 +10,30 @@ import { Container, HeaderImg, RightContainer, LeftContainer, Profile, Pagelink 
 
 export function Header() {
 
-    const { logOut, userData } = useUser()
+    const { logOut, userData: { data } } = useUser()
+
+    // useEffect(() => {
+    //     const vnt = async () => {
+    //         await console.log(data)
+    //     }
+
+
+
+    //     vnt()
+    // }, [])
+
+
+    console.log(data)
+
+    // const [names, setName] = useState()
+
+    // useEffect(() => {
+    //     const puttingName = () => {
+    //         setName(name)
+    //     }
+    //     puttingName()
+    // }, [])
+
 
 
     const { push, location: { pathname } } = useHistory()
@@ -19,9 +42,6 @@ export function Header() {
         logOut()
         push("/login")
     }
-
-
-    console.log(userData.data.name)
 
     return (
         <Container>
@@ -37,7 +57,7 @@ export function Header() {
 
                 </Profile>
                 <div style={{ display: 'flex', flexDirection: "column" }}>
-                    <p>Olá, {userData.data.name} </p>
+                    <p>Olá, { } </p>
                     <a onClick={logOutUser}> Sair </a>
                 </div>
             </RightContainer>

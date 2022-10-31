@@ -5,8 +5,10 @@ import Proptypes from 'prop-types'
 
 const UserContext = createContext({})
 
+
 export const UserProvider = ({ children }) => {
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState({})
+
     // dados pra aplicação
     const putInfo = async (userInfos) => {
         setUserData(userInfos)
@@ -31,8 +33,6 @@ export const UserProvider = ({ children }) => {
         }
         loadUserData()
     }, [])
-
-
 
 
 

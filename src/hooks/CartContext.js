@@ -6,7 +6,7 @@ import Proptypes from 'prop-types'
 const CartContext = createContext({})
 
 export const CartProvider = ({ children }) => {
-    const [cartData, setCartData] = useState([])
+    const [cartData, setCartData] = useState({})
     // dados pra aplicação
 
     const updateLocalStorage = async product => {
