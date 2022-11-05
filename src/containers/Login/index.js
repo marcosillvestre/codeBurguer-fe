@@ -72,8 +72,11 @@ export function Login() {
 
 
     putInfo({ data })
+    const isAdmin = data && data.admins
+
     setInterval(() => {
-      history.push('/')
+      isAdmin ? history.push('/admin') : history.push('/')
+
 
     }, 2000);
 

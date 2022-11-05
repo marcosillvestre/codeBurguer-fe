@@ -30,6 +30,7 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "no-unused-vars": "warn",
+        "spaced-comment": 0,
         "import-helpers/order-imports": [
             "warn",
             { // example configuration

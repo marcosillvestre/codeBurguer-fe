@@ -46,6 +46,14 @@ a{
 opacity: 0.6 ;
   }
 }
+.Names{
+  display: flex ;
+  gap: 10px;
+p::first-letter {
+  text-transform: uppercase;
+}
+}
+
 
 
 
