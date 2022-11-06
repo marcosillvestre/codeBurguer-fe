@@ -11,7 +11,6 @@ export function CardProduct({ product }) {
 
     const { putInfoInCart } = useCart()
     const { push } = useHistory()
-
     return (
 
         <Container>
@@ -20,15 +19,12 @@ export function CardProduct({ product }) {
                 <ProductName>{product.name}</ProductName>
                 <ProductPrice>{product.formatedValue}</ProductPrice>
                 <Button onClick={() => {
-
                     putInfoInCart(product)
                     push('/carrinho')
                 }}>Adicionar</Button>
             </div>
         </Container>
     )
-
-
 }
 
 

@@ -15,7 +15,8 @@ export function ResumeCart() {
     const [finalPrice, setFinalprice] = useState(0)
     const [deliverTax] = useState(5)
 
-    const { cartData } = useCart()      
+    const { cartData } = useCart()
+    console.log(cartData)
 
 
     useEffect(() => {
@@ -41,12 +42,7 @@ export function ResumeCart() {
 
         }
         )
-
-
-
-
     }
-
     return (
 
         <Container>
