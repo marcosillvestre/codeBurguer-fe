@@ -6,11 +6,11 @@ import Proptypes from 'prop-types'
 const CartContext = createContext({})
 
 export const CartProvider = ({ children }) => {
-    const [cartData, setCartData] = useState({})
+    const [cartData, setCartData] = useState([])
     // dados pra aplicação
     console.log(cartData)
 
-    const updateLocalStorage = async product => {
+    const updateLocalStorage = async (product) => {
         await localStorage.setItem('codeBurguer:cartInfo', JSON.stringify(product))
     }
 
@@ -32,7 +32,6 @@ export const CartProvider = ({ children }) => {
             setCartData(newCart)
         }
         await updateLocalStorage(newCart)
-
     }
 
     const increaseCart = async prodId => {

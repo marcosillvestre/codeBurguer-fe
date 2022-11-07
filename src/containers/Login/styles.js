@@ -13,9 +13,9 @@ export const Container = styled.section`
 `
 export const ContainerItens = styled.main`
   background: #373737;
-  height: 53em;
+  height: 47em;
   width: 40em;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
