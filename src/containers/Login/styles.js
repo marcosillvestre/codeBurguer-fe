@@ -30,10 +30,10 @@ export const ContainerItens = styled.main`
     height: 25px;
     width: 25px;
     position: relative;
-    left: 12em;
+    left: 12.6em;
     font-size: 1.2rem;
     color: #ffffff;
-    bottom: 5.3em;
+    bottom: 4.7em;
   }
 `
 export const P = styled.p`

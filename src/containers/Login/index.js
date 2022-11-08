@@ -67,16 +67,13 @@ export function Login() {
         error: 'Alguma coisa deu errado, confira seus dados'
       }
 
-
     )
-
 
     putInfo({ data })
     const isAdmin = data && data.admins
 
     setInterval(() => {
       isAdmin ? history.push('/admin') : history.push('/')
-
 
     }, 2000);
 

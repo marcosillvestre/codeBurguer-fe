@@ -8,7 +8,6 @@ const CartContext = createContext({})
 export const CartProvider = ({ children }) => {
     const [cartData, setCartData] = useState([])
     // dados pra aplicação
-    console.log(cartData)
 
     const updateLocalStorage = async (product) => {
         await localStorage.setItem('codeBurguer:cartInfo', JSON.stringify(product))

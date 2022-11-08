@@ -14,7 +14,9 @@ function Routes() {
         <Route component={Register} path="/cadastro" />
         <PrivateRoutes component={Products} path={"/produtos"} />
         <PrivateRoutes component={Cart} path={'/carrinho'} />
-        <PrivateRoutes component={Admin} path={'/admin'} />
+
+        <PrivateRoutes component={Admin} path={'/admin'} isAdmin />
+
         <PrivateRoutes exact component={Home} path={'/'} />
 
       </Switch>
