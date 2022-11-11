@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Carousel from 'react-elastic-carousel'
+import { useQuery } from 'react-query'
 
 import Category from '../../assets/CATEGORIAS.png'
-import api from '../../services/api'
+import apiCodeB from '../../services/api'
 import { Container, CategoryLogo, ContainerItens, CategoryImage, CategoryButton } from './styles'
 
 
@@ -11,13 +12,21 @@ export function CategoryCarrousel() {
 
     const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        async function loadCategory() {
-            const { data } = await api.get('categories')
-            setCategories(data)
-        }
-        loadCategory()
-    }, [])
+    // useEffect(() => {
+    //     async function loadCategory() {
+    //         const { data } = await api.get('categories')
+    //         setCategories(data)
+    //     }
+    //     loadCategory()
+    // }, [])
+
+    const { data } = useQuery('Categories', async () => {
+        const { data } = await apiCodeB.get('categories')
+        console.log(data)
+        setCategories(data)
+
+        //Revalidate on focus:: sair e voltar ja atualiza 
+    })
 
     const breakpoints = [
         { width: 1, itemsToShow: 1 },

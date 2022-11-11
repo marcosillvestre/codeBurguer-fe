@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
+import { useQuery } from 'react-query'
 import { useHistory } from 'react-router-dom'
 
 import Offer from '../../assets/OFERTAS.png'
 import { useCart } from '../../hooks/CartContext'
-import api from '../../services/api'
+import apiCodeB from '../../services/api'
 import format from '../../utils/FormatedCurrency'
 import { Container, OfferLogo, ContainerItens, OfferImage, OfferButton } from './styles'
 
@@ -16,17 +17,27 @@ export function OfferCarrousel() {
     const [Offers, setOffers] = useState([])
     const { push } = useHistory()
 
-    useEffect(() => {
-        async function loadOffer() {
-            const { data } = await api.get('products')
-            const offersProducts = data.filter(product => product.offer).map(offer => {
-                return { ...offer, formatedValue: format(offer.price) }
-            })
+    // useEffect(() => {
+    //     async function loadOffer() {
+    //         const { data } = await api.get('products')
+    //         const offersProducts = data.filter(product => product.offer).map(offer => {
+    //             return { ...offer, formatedValue: format(offer.price) }
+    //         })
 
-            setOffers(offersProducts)
-        }
-        loadOffer()
-    }, [])
+    //         setOffers(offersProducts)
+    //     }
+    //     loadOffer()
+    // }, [])
+    const { data } = useQuery('Products', async () => {
+        const data = await apiCodeB.get('products')
+        // const offersProducts = data.filter(product => product.offer).map(offer => {
+        //     return { ...offer, formatedValue: format(offer.price) }
+        // })
+        // setOffers(offersProducts)
+        console.log(data)
+
+        //Revalidate on focus:: sair e voltar ja atualiza 
+    },)
 
     const breakpoints = [
         { width: 1, itemsToShow: 1 },
