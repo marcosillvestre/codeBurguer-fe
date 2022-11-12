@@ -17,27 +17,16 @@ export function OfferCarrousel() {
     const [Offers, setOffers] = useState([])
     const { push } = useHistory()
 
-    // useEffect(() => {
-    //     async function loadOffer() {
-    //         const { data } = await api.get('products')
-    //         const offersProducts = data.filter(product => product.offer).map(offer => {
-    //             return { ...offer, formatedValue: format(offer.price) }
-    //         })
 
-    //         setOffers(offersProducts)
-    //     }
-    //     loadOffer()
-    // }, [])
+
     const { data } = useQuery('Products', async () => {
-        const data = await apiCodeB.get('products')
-        // const offersProducts = data.filter(product => product.offer).map(offer => {
-        //     return { ...offer, formatedValue: format(offer.price) }
-        // })
-        // setOffers(offersProducts)
-        console.log(data)
-
+        const { data: Offersfetch } = await apiCodeB.get('products')
+        const offersProducts = Offersfetch.filter(product => product.offer).map(offer => {
+            return { ...offer, formatedValue: format(offer.price) }
+        })
+        setOffers(offersProducts)
         //Revalidate on focus:: sair e voltar ja atualiza 
-    },)
+    })
 
     const breakpoints = [
         { width: 1, itemsToShow: 1 },

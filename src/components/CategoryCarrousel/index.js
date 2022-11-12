@@ -22,7 +22,6 @@ export function CategoryCarrousel() {
 
     const { data } = useQuery('Categories', async () => {
         const { data } = await apiCodeB.get('categories')
-        console.log(data)
         setCategories(data)
 
         //Revalidate on focus:: sair e voltar ja atualiza 

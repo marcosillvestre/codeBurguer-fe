@@ -23,7 +23,6 @@ export function Products({ location: { state } }) {
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState(categoryId)
 
-    // console.log(categories)
 
     useEffect(() => {
         async function loadCategory() {

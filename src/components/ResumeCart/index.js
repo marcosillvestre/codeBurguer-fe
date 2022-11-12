@@ -16,7 +16,6 @@ export function ResumeCart() {
     const [deliverTax] = useState(5)
 
     const { cartData } = useCart()
-    console.log(cartData)
 
 
     useEffect(() => {

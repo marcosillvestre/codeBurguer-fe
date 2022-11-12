@@ -13,7 +13,6 @@ export function ContainerCart() {
 
 
 
-    // console.log(cartData)
 
     return (
 

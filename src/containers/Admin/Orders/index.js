@@ -46,7 +46,6 @@ function Orders() {
 
     }, [orders])
 
-    console.log(rows)
 
     return (
 
