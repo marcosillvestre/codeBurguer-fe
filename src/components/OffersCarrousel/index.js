@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 import { useQuery } from 'react-query'
 import { useHistory } from 'react-router-dom'
@@ -19,7 +19,7 @@ export function OfferCarrousel() {
 
 
 
-    const { data } = useQuery('Products', async () => {
+    const { isFetching } = useQuery('Products', async () => {
         const { data: Offersfetch } = await apiCodeB.get('products')
         const offersProducts = Offersfetch.filter(product => product.offer).map(offer => {
             return { ...offer, formatedValue: format(offer.price) }
@@ -67,6 +67,7 @@ export function OfferCarrousel() {
                 }
 
             </Carousel>
+            {isFetching && <p>Carregando...</p>}
         </Container>
     )
 }

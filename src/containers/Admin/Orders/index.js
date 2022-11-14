@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react'
+import { useQuery } from 'react-query';
 
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -11,21 +12,27 @@ import TableRow from '@mui/material/TableRow';
 
 import apiCodeB from '../../../services/api';
 import Row from './row';
-import { Container } from './styles'
+import status from './status'
+import { Container, Menu, LinkMenu } from './styles'
 
 function Orders() {
     const [orders, setOrders] = useState([])
     const [rows, setRows] = useState([])
+    const [filteredStatus, setFilteredStatus] = useState([])
+    const [activeStatus, setActiveStatus] = useState(1)
 
 
-    useEffect(() => {
-        async function loadCategory() {
-            const { data } = await apiCodeB.get('orders')
-            setOrders(data)
-        }
 
-        loadCategory()
-    }, [])
+    async function getOrders() {
+        const { data } = await apiCodeB.get('orders')
+        setOrders(data)
+        setFilteredStatus(data)
+    }
+
+    const { isFetching } = useQuery('Orders', () => getOrders(),
+        {
+            staleTime: 60000,
+        })
 
 
     function createData(orders) {
@@ -36,20 +43,42 @@ function Orders() {
             status: orders.status,
             products: orders.products,
         }
-
     }
 
     useEffect(() => {
-
-        const newRow = orders.map(ord => createData(ord))
+        const newRow = filteredStatus.map(ord => createData(ord))
         setRows(newRow)
+    }, [filteredStatus])
 
-    }, [orders])
+
+    function handleStatus(status) {
+        if (status.id === 1) {
+            setFilteredStatus(orders)
+        } else {
+            const newOrder = orders.filter(order => order.status === status.value)
+            setFilteredStatus(newOrder)
+        }
+        setActiveStatus(status.id)
+    }
 
 
     return (
 
         <Container>
+
+            <Menu>
+                {status &&
+                    status.map(status => (
+                        <LinkMenu
+                            key={status.id}
+                            onClick={() => handleStatus(status)}
+                            isActive={activeStatus === status.id}
+                        >{status.label}</LinkMenu>
+                    ))
+                }
+
+
+            </Menu>
             <TableContainer component={Paper}>
 
                 <Table aria-label="collapsible table">
@@ -71,6 +100,9 @@ function Orders() {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            {isFetching && <p>Carregando...</p>}
+
         </Container>
 
     )

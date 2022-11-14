@@ -12,20 +12,13 @@ export function CategoryCarrousel() {
 
     const [categories, setCategories] = useState([])
 
-    // useEffect(() => {
-    //     async function loadCategory() {
-    //         const { data } = await api.get('categories')
-    //         setCategories(data)
-    //     }
-    //     loadCategory()
-    // }, [])
-
-    const { data } = useQuery('Categories', async () => {
+    async function getCategories() {
         const { data } = await apiCodeB.get('categories')
         setCategories(data)
+    }
 
-        //Revalidate on focus:: sair e voltar ja atualiza 
-    })
+    const { isFetching } = useQuery('Categories', () => getCategories())
+
 
     const breakpoints = [
         { width: 1, itemsToShow: 1 },
@@ -62,6 +55,7 @@ export function CategoryCarrousel() {
                 }
 
             </Carousel>
+            {isFetching && <p>Carregando...</p>}
         </Container>
     )
 }

@@ -7,6 +7,7 @@ export const Container = styled.div`
     background: #efefef ;
     min-height: 100vh ;
     padding: 100px 30px ;
+    text-align: center ;
 `
 
 export const ProductImg = styled.img`
@@ -20,3 +21,21 @@ export const SelectStatus = styled(Select)`
     cursor: pointer;
 }
 `
+export const Menu = styled.div`
+display: flex;
+gap: 50px;
+justify-content: center;
+margin: 20px 0;
+`
+
+export const LinkMenu = styled.a`
+color: #323D5D ;
+cursor: pointer;
+padding: 10px 0 ;
+    border-bottom:  ${props => props.isActive && '3px solid #9758A6'} ;
+    font-weight:  ${props => props.isActive && 'bold'} ;
+
+
+`
+
+
