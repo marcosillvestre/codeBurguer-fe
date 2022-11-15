@@ -35,7 +35,6 @@ padding: 10px 0 ;
     border-bottom:  ${props => props.isActive && '3px solid #9758A6'} ;
     font-weight:  ${props => props.isActive && 'bold'} ;
 
-
 `
 
 

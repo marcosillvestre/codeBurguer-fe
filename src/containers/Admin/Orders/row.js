@@ -20,13 +20,25 @@ import status from './status';
 import { ProductImg, SelectStatus } from './styles'
 
 
-function Row({ row }) {
-    const [statuss, setStatus] = useState()
+function Row({ row, orders, setOrders }) {
+    const [isLoading, setisLoading] = useState(false)
     const [open, setOpen] = React.useState(false);
 
     const setNewStatus = async (id, status) => {
-        setStatus(status)
-        apiCodeB.put(`orders/${id}`, { status })
+        setisLoading(true)
+        try {
+            apiCodeB.put(`orders/${id}`, { status })
+            const newOrder = orders.map(order => {
+                return order._id === id ? { ...order, status } : order
+            })
+            setOrders(newOrder)
+        }
+        catch (error) {
+            console.error(error)
+        }
+        finally {
+            setisLoading(false)
+        }
     }
 
 
@@ -50,10 +62,12 @@ function Row({ row }) {
                 <TableCell> {formatDate(row.date)}   </TableCell>
                 <TableCell>
                     <SelectStatus
-                        options={status}
+                        options={status.filter(sts => sts.value !== "Todos")}
                         menuPortalTarget={document.body}
                         placeholder={row.status}
-                        onChange={newStatus => { setNewStatus(row.orderId, newStatus.value) }} />
+                        onChange={newStatus => { setNewStatus(row.orderId, newStatus.value) }}
+                        isLoading={isLoading}
+                    />
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -97,9 +111,9 @@ function Row({ row }) {
 }
 
 
-
 Row.propTypes = {
-
+    orders: PropType.array,
+    setOrders: PropType.func,
     row: PropType.shape({
         name: PropType.string.isRequired,
         orderId: PropType.string.isRequired,
