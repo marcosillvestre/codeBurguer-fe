@@ -1,28 +1,22 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, } from 'react'
-import { useForm } from 'react-hook-form'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-import codeBurguer from '../../assets/burger2.svg'
-import burguer from '../../assets/cdBurguer.svg'
-import { Button } from '../../components'
+import codeBurguer from '../../assets/burger2.svg';
+import burguer from '../../assets/cdBurguer.svg';
+import { Button } from '../../components';
 import { useUser } from '../../hooks/UserContext';
-import api from '../../services/api'
+import api from '../../services/api';
 import {
   Container,
-  ContainerItens,
-  P,
-  Label,
-  Input,
-  MessageError,
-  SignInParag
-
-} from './styles'
+  ContainerItens, Input, Label, MessageError, P, SignInParag
+} from './styles';
 
 export function Login() {
 
@@ -81,10 +75,13 @@ export function Login() {
 
   return (
     <Container>
+
       <img src={burguer} />
 
       <ContainerItens>
-        <img src={codeBurguer} />
+        <div>
+          <img src={codeBurguer} />
+        </div>
         <P>Login</P>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Label>Email</Label>
@@ -105,7 +102,7 @@ export function Login() {
           />
           <MessageError>{errors.password?.message}</MessageError>
 
-          <Button type="submit" style={{ position: 'relative', top: '3em' }}>
+          <Button type="submit" style={{ position: 'relative', top: '1em' }}>
             Sign In
           </Button>
         </form>
@@ -117,9 +114,11 @@ export function Login() {
             <AiOutlineEyeInvisible className="btnEye" />
           )}
         </button>
+
         <SignInParag>
           Não possui conta ? <Link to={'/cadastro'} style={{ color: 'white' }}>Sign Up</Link>
         </SignInParag>
+
       </ContainerItens>
     </Container>
   )

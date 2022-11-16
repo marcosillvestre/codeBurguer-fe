@@ -1,14 +1,13 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import { useCart } from '../../hooks/CartContext'
-import apiCodeB from '../../services/api'
-import formatedCurrency from '../../utils/FormatedCurrency'
-import { Button } from '../Button'
-import { Container, ContainerItens } from './styles'
+import { useCart } from '../../hooks/CartContext';
+import apiCodeB from '../../services/api';
+import formatedCurrency from '../../utils/FormatedCurrency';
+import { Container, ContainerItens, Finalize } from './styles';
 
 
 export function ResumeCart() {
@@ -59,13 +58,13 @@ export function ResumeCart() {
                     <p> Taxa de entrega</p>
                     <p> {formatedCurrency(deliverTax)}</p>
                 </div>
-                <div style={{ marginTop: '100px' }}>
-                    <h2> Total</h2>
-                    <h3>{formatedCurrency(finalPrice + deliverTax)}</h3>
+                <div style={{ marginTop: '10px' }}>
+                    <h4> Total</h4>
+                    <h4>{formatedCurrency(finalPrice + deliverTax)}</h4>
                 </div>
             </ContainerItens>
 
-            <Button onClick={sendOrder}>Finalizar pedido</Button>
+            <Finalize onClick={sendOrder}>Finalizar pedido</Finalize>
         </Container>
     )
 

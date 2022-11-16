@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import Paper from '@mui/material/Paper';
@@ -12,8 +12,8 @@ import TableRow from '@mui/material/TableRow';
 
 import apiCodeB from '../../../services/api';
 import Row from './row';
-import status from './status'
-import { Container, Menu, LinkMenu } from './styles'
+import status from './status';
+import { Container, LinkMenu, Menu } from './styles';
 
 function Orders() {
     const [orders, setOrders] = useState([])

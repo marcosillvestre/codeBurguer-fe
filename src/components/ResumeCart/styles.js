@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
+import { Button } from '../../components'
+
 export const Container = styled.div`
 
 background: #FFFFFF;
@@ -24,4 +26,9 @@ div{
   justify-Content: space-between 
 }
 
+`
+
+export const Finalize = styled(Button)`
+position: relative ;
+left: 40px ;
 `

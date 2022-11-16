@@ -6,8 +6,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
     background: #efefef ;
     min-height: 100vh ;
-    padding: 100px 30px ;
+    padding: 30px 100px ;
     text-align: center ;
+    width: 100vw;
 `
 
 export const ProductImg = styled.img`
@@ -29,6 +30,7 @@ margin: 20px 0;
 `
 
 export const LinkMenu = styled.a`
+text-decoration: none;
 color: #323D5D ;
 cursor: pointer;
 padding: 10px 0 ;

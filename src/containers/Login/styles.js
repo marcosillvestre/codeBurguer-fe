@@ -10,30 +10,37 @@ export const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `
 export const ContainerItens = styled.main`
   background: #373737;
-  height: 47em;
-  width: 40em;
-  border-radius: 10px;
+  height: 68.3%;
+  width: 35em;
+  border-radius: 0 10px 10px 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 0 4em;
+  div{
+    display: flex ;
+    justify-content: center ;
   img {
     position: relative;
-    top: -5em;
+    top: -2em;
+    width: 400px  ;
   }
+  }
+
   .btnEye {
     border: none;
     background: none;
     height: 25px;
     width: 25px;
     position: relative;
-    left: 12.6em;
+    left: 10.5em;
     font-size: 1.2rem;
     color: #ffffff;
-    bottom: 4.7em;
+    bottom: 5.1em;
   }
 `
 export const P = styled.p`
@@ -57,7 +64,7 @@ export const Input = styled.input`
   background: #ffffff;
   box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
   border-radius: 5px;
-  margin: 0 0 5em;
+  margin: 0 0 3em;
   border: ${props => (props.validIpnut ? '2px solid #CC1717;' : 'none')};
   padding-left: 10px;
 `
@@ -65,7 +72,7 @@ export const Input = styled.input`
 export const SignInParag = styled.p`
   color: #ffffff;
   position: relative;
-  top: 4em;
+  top: 1em;
   margin: 0 0 0 10px;
   cursor: pointer;
   font-weight: 400;

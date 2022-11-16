@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 
-import Orders from './Orders'
+import Sidebar from '../../components/adminSideBar'
+import EditOrders from './EditOrders'
 import { Container } from './styles'
 
 export function Admin() {
@@ -10,7 +11,9 @@ export function Admin() {
     return (
 
         <Container>
-            <Orders />
+            <Sidebar />
+            {/* <Orders /> */}
+            <EditOrders />
         </Container>
 
     )

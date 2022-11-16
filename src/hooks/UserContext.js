@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { createContext, useContext, useState, useEffect } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
 
 import Proptypes from 'prop-types'
 
@@ -18,6 +18,7 @@ export const UserProvider = ({ children }) => {
 
     const logOut = async () => {
         await localStorage.removeItem('codeBurguer:userData')
+
     }
 
 
