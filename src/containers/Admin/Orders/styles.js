@@ -6,9 +6,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
     background: #efefef ;
     min-height: 100vh ;
-    padding: 30px 100px ;
     text-align: center ;
-    width: 100vw;
+    width: calc(100vw - 500px);
+    
 `
 
 export const ProductImg = styled.img`
@@ -20,6 +20,7 @@ export const ProductImg = styled.img`
 export const SelectStatus = styled(Select)`
 .css-1s2u09g-control{
     cursor: pointer;
+    width: 250px ;
 }
 `
 export const Menu = styled.div`

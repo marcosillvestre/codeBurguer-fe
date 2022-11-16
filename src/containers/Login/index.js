@@ -75,9 +75,9 @@ export function Login() {
 
   return (
     <Container>
-
-      <img src={burguer} />
-
+      <div>
+        <img src={burguer} />
+      </div>
       <ContainerItens>
         <div>
           <img src={codeBurguer} />

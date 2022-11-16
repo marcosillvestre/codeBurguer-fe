@@ -12,11 +12,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-
 import apiCodeB from '../../../services/api';
 import formatedCurrency from '../../../utils/FormatedCurrency';
 import { ProductImg } from '../Orders/styles';
-import { Container } from './styles';
+import { Container, EditIcon } from './styles';
 
 function EditOrders() {
   const [products, setProducts] = useState([])
@@ -60,13 +59,14 @@ function EditOrders() {
               >
                 <TableCell component="th" scope="row">
                   {pd.name}
+
                 </TableCell>
                 <TableCell>{checked(pd.offer)}</TableCell>
 
                 <TableCell>{formatedCurrency(pd.price)}</TableCell>
                 <TableCell>{pd.category.name}</TableCell>
                 <TableCell><ProductImg src={pd.url} alt='imagem-produto' /></TableCell>
-                <TableCell><button>Editar produto</button></TableCell>
+                <TableCell><EditIcon /> </TableCell>
               </TableRow>
             ))}
           </TableBody>

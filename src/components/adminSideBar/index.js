@@ -47,8 +47,8 @@ const Sidebar = () => {
                             <MenuItem><HomeIcon /> Home </MenuItem>
                         </ListLink>
 
-                        <ListLink exact to="/admin" >
-                            <MenuItem><ShoppingCartIcon />Pedidos</MenuItem>
+                        <ListLink exact to="/listagem-produtos" >
+                            <MenuItem><ShoppingCartIcon />Listar pedidos</MenuItem>
                         </ListLink>
 
                         <ListLink exact to="/produtos" >

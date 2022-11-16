@@ -2,8 +2,8 @@
 import React from 'react'
 
 import Sidebar from '../../components/adminSideBar'
-import EditOrders from './EditOrders'
-import { Container } from './styles'
+import Orders from './Orders'
+import { Container, ContainerItens } from './styles'
 
 export function Admin() {
 
@@ -12,8 +12,9 @@ export function Admin() {
 
         <Container>
             <Sidebar />
-            {/* <Orders /> */}
-            <EditOrders />
+            <ContainerItens>
+                <Orders />
+            </ContainerItens>
         </Container>
 
     )

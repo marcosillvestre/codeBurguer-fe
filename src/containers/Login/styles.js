@@ -10,7 +10,13 @@ export const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  div{
+    img{
+      height: 640px;
+      width: 526px;
+    }
   
+  }
 `
 export const ContainerItens = styled.main`
   background: #373737;
@@ -20,7 +26,7 @@ export const ContainerItens = styled.main`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0 4em;
+  padding: 0 60px;
   div{
     display: flex ;
     justify-content: center ;
@@ -28,6 +34,7 @@ export const ContainerItens = styled.main`
     position: relative;
     top: -2em;
     width: 400px  ;
+    height: 200px
   }
   }
 
