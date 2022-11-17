@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import codeBurguer from '../../assets/burger2.svg';
-import burguer from '../../assets/cdBurguer.svg';
+import burguer from '../../assets/burguerr.png';
 import { Button } from '../../components';
 import { useUser } from '../../hooks/UserContext';
 import api from '../../services/api';

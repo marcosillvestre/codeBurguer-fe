@@ -3,37 +3,34 @@ import styled from 'styled-components'
 
 import backg from '../../assets/backg.svg'
 
-export const Container = styled.section`
+export const Container = styled.div`
   background-image: url(${backg});
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
   div{
     img{
-      height: 640px;
-      width: 526px;
+
     }
   
   }
 `
 export const ContainerItens = styled.main`
   background: #373737;
-  height: 68.3%;
-  width: 35em;
-  border-radius: 0 10px 10px 0;
+  width: 486px;
+  border-radius: 0 15px 15px 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0 60px;
+  padding: 58px 50px;
   div{
     display: flex ;
     justify-content: center ;
   img {
-    position: relative;
-    top: -2em;
-    width: 400px  ;
+    width: 350px  ;
     height: 200px
   }
   }
@@ -71,7 +68,7 @@ export const Input = styled.input`
   background: #ffffff;
   box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
   border-radius: 5px;
-  margin: 0 0 3em;
+  margin: 0 0 2em;
   border: ${props => (props.validIpnut ? '2px solid #CC1717;' : 'none')};
   padding-left: 10px;
 `
