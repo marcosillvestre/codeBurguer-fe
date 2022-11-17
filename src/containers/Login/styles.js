@@ -13,15 +13,18 @@ export const Container = styled.div`
 
   div{
     img{
+      transform: translateX(20px) ;
+      z-index: -1 ;
 
     }
   
   }
 `
-export const ContainerItens = styled.main`
+export const ContainerItens = styled.div`
+      z-index: 1 ;
   background: #373737;
-  width: 486px;
-  border-radius: 0 15px 15px 0;
+  width:400px;
+  border-radius:  15px 15px ;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -41,10 +44,10 @@ export const ContainerItens = styled.main`
     height: 25px;
     width: 25px;
     position: relative;
-    left: 10.5em;
+    left: 6.8em;
     font-size: 1.2rem;
     color: #ffffff;
-    bottom: 5.1em;
+    bottom: 4.1em;
   }
 `
 export const P = styled.p`
