@@ -34,7 +34,8 @@ export const ContainerItens = styled.div`
     justify-content: center ;
   img {
     width: 350px  ;
-    height: 200px
+    height: 200px;
+    transform: translateX(-4px, -25px)
   }
   }
 
