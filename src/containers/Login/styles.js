@@ -90,11 +90,4 @@ export const SignInParag = styled.p`
     text-decoration: underline;
   }
 `
-export const MessageError = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  color: #cc1717;
-  position: relative;
-  top: -35px;
-`
+

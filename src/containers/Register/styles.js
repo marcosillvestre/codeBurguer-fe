@@ -13,13 +13,12 @@ export const Container = styled.section`
 `
 export const ContainerItens = styled.main`
   background: #373737;
-  height: 53em;
-  width: 40em;
-  border-radius: 0 10px 10px 0;
+  width: 32em;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0 4em;
+  padding: 1rem 3rem;
   img {
     position: relative;
     top: 0em;
@@ -57,7 +56,7 @@ export const Input = styled.input`
   background: #ffffff;
   box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
   border-radius: 5px;
-  margin: 0 0 3em;
+  margin: 0 0 2.5em;
   border: ${props => (props.validIpnut ? '2px solid #CC1717;' : 'none')};
   padding-left: 10px;
 `
@@ -65,7 +64,7 @@ export const Input = styled.input`
 export const SignInParag = styled.p`
   color: #ffffff;
   position: relative;
-  top: -1em;
+  top: -2em;
   margin: 0 0 0 10px;
   cursor: pointer;
   font-weight: 400;
@@ -75,11 +74,4 @@ export const SignInParag = styled.p`
     text-decoration: underline;
   }
 `
-export const MessageError = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  color: #cc1717;
-  position: relative;
-  top: -25px;
-`
+

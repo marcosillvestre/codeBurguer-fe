@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { useCart } from '../../hooks/CartContext'
-import { Container, Img, ProductName, ProductPrice, Button } from './styles'
+import { Button, Container, Img, ProductName, ProductPrice } from './styles'
 
 export function CardProduct({ product }) {
 

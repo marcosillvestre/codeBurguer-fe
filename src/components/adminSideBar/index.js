@@ -2,10 +2,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import DensitySmallIcon from '@mui/icons-material/DensitySmall';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
-import PostAddIcon from '@mui/icons-material/PostAdd';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
     CDBSidebar,
@@ -14,27 +13,27 @@ import {
     CDBSidebarHeader,
     CDBSidebarMenu
 } from 'cdbreact';
+import PropTypes from 'prop-types';
 
+import allPaths from '../../constants/paths';
 import { useUser } from '../../hooks/UserContext';
 import { Bar, ListLink, MenuItem } from './styles';
 
 
-const Sidebar = () => {
+const Sidebar = ({ path }) => {
     const { push } = useHistory()
     const { logOut } = useUser()
 
     const unLog = async () => {
         logOut()
-        push("/login")
+        push(allPaths.login)
     }
-
-
     return (
         <Bar>
             <CDBSidebar textColor="#fff" backgroundColor="#333">
 
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-                    <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+                    <a href={allPaths.home} className="text-decoration-none" style={{ color: 'inherit' }}>
                         Code Burguer
                     </a>
 
@@ -42,22 +41,22 @@ const Sidebar = () => {
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
 
-                        <ListLink exact to="/admin" >
-
-                            <MenuItem><HomeIcon /> Home </MenuItem>
+                        <ListLink exact to={allPaths.admin} >
+                            <MenuItem isActive={path === allPaths.admin}> <HomeIcon /> Pedidos </MenuItem>
                         </ListLink>
 
-                        <ListLink exact to="/listagem-produtos" >
-                            <MenuItem><ShoppingCartIcon />Listar pedidos</MenuItem>
+                        <ListLink exact to={allPaths.edit} >
+                            <MenuItem isActive={path === allPaths.edit}> <ShoppingCartIcon />Listar pedidos</MenuItem>
                         </ListLink>
 
-                        <ListLink exact to="/produtos" >
-                            <MenuItem><DensitySmallIcon />Produtos</MenuItem>
+                        <ListLink exact to={allPaths.newProduct} >
+                            <MenuItem isActive={path === allPaths.newProduct} ><AddToPhotosIcon />Adicionar produto</MenuItem>
                         </ListLink>
 
-                        <ListLink exact to="/*" >
-                            <MenuItem ><PostAddIcon />Adicionar produto</MenuItem>
-                        </ListLink>
+                        {/* <ListLink exact to={allPaths} >
+                            <MenuItem> <DensitySmallIcon />Produtos</MenuItem>
+                        </ListLink> */}
+
 
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
@@ -73,6 +72,8 @@ const Sidebar = () => {
 };
 
 
-
-
 export default Sidebar;
+
+Sidebar.propTypes = {
+    path: PropTypes.string
+}

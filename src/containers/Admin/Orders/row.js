@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -12,17 +12,17 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import PropType from 'prop-types'
+import PropType from 'prop-types';
 
 import apiCodeB from '../../../services/api';
-import formatDate from '../../../utils/FormatDate'
+import formatDate from '../../../utils/FormatDate';
 import status from './status';
-import { ProductImg, SelectStatus } from './styles'
+import { ProductImg, SelectStatus } from './styles';
 
 
 function Row({ row, orders, setOrders }) {
     const [isLoading, setisLoading] = useState(false)
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const setNewStatus = async (id, status) => {
         setisLoading(true)

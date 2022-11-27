@@ -4,8 +4,9 @@ import Carousel from 'react-elastic-carousel'
 import { useQuery } from 'react-query'
 
 import Category from '../../assets/CATEGORIAS.png'
+import allPaths from '../../constants/paths'
 import apiCodeB from '../../services/api'
-import { Container, CategoryLogo, ContainerItens, CategoryImage, CategoryButton } from './styles'
+import { CategoryButton, CategoryImage, CategoryLogo, Container, ContainerItens } from './styles'
 
 
 export function CategoryCarrousel() {
@@ -45,7 +46,7 @@ export function CategoryCarrousel() {
                             <CategoryImage src={category.url} alt='Imagem da categoria' />
                             <CategoryButton
                                 to={{
-                                    pathname: "/produtos",
+                                    pathname: allPaths.products,
                                     state: { categoryId: category.id }
                                 }}>
                                 {category.name}</CategoryButton>

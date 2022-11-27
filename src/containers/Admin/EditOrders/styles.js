@@ -3,8 +3,8 @@ import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-width: 70% ;
-height: 100vh ;
+width: 90% ;
+height: calc(100vh - 50px) ;
 `
 
 export const EditIcon = styled(AutoFixNormalIcon)`

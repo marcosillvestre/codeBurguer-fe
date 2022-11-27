@@ -10,12 +10,13 @@ import * as yup from 'yup';
 
 import codeBurguer from '../../assets/burger2.svg';
 import burguer from '../../assets/burguerr.png';
-import { Button } from '../../components';
+import { Button, ErrorMessage } from '../../components';
+import allPaths from '../../constants/paths';
 import { useUser } from '../../hooks/UserContext';
 import api from '../../services/api';
 import {
   Container,
-  ContainerItens, Input, Label, MessageError, P, SignInParag
+  ContainerItens, Input, Label, P, SignInParag
 } from './styles';
 
 export function Login() {
@@ -67,7 +68,7 @@ export function Login() {
     const isAdmin = data && data.admins
 
     setInterval(() => {
-      isAdmin ? history.push('/admin') : history.push('/')
+      isAdmin ? history.push(allPaths.admin) : history.push(allPaths.home)
 
     }, 2000);
 
@@ -91,7 +92,7 @@ export function Login() {
             type="email"
             {...register('Email')}
           />
-          <MessageError>{errors.Email?.message}</MessageError>
+          <ErrorMessage>{errors.Email?.message}</ErrorMessage>
 
           <Label>Senha</Label>
 
@@ -100,7 +101,7 @@ export function Login() {
             type={eyeChange ? 'text' : 'Password'}
             {...register('password')}
           />
-          <MessageError>{errors.password?.message}</MessageError>
+          <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
           <Button type="submit" style={{ position: 'relative', top: '1em' }}>
             Sign In

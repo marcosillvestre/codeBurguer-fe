@@ -1,26 +1,21 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-import codeBurguer from '../../assets/burger2.svg'
-import logBurguer from '../../assets/signUpbg.svg'
-import { Button } from '../../components'
-import api from '../../services/api'
+import codeBurguer from '../../assets/burger2.svg';
+import logBurguer from '../../assets/signUpbg.svg';
+import { Button, ErrorMessage } from '../../components';
+import api from '../../services/api';
 import {
   Container,
-  ContainerItens,
-  P,
-  Label,
-  Input,
-  MessageError,
-  SignInParag
-} from './styles'
+  ContainerItens, Input, Label, P, SignInParag
+} from './styles';
 
 export function Register() {
   const [eyeChange, setEyeChange] = useState(false)
@@ -84,21 +79,22 @@ export function Register() {
 
   return (
     <Container>
-      <img src={logBurguer} style={{ height: '53em' }} />
-
+      <div>
+        <img src={logBurguer} style={{ height: '42em' }} />
+      </div>
       <ContainerItens>
         <img src={codeBurguer} style={{ height: '7em' }} />
 
         <P>Cadastre-se</P>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
 
-          <Label>Nome</Label>
+          <Label>Primeiro nome</Label>
           <Input
             validIpnut={errors.Name?.message}
             type="text"
             {...register('Name')}
           />
-          <MessageError>{errors.Name?.message}</MessageError>
+          <ErrorMessage>{errors.Name?.message}</ErrorMessage>
 
 
           <Label>Email</Label>
@@ -106,7 +102,7 @@ export function Register() {
             validIpnut={errors.Email?.message}
             type="email"
             {...register('Email')} />
-          <MessageError>{errors.Email?.message}</MessageError>
+          <ErrorMessage>{errors.Email?.message}</ErrorMessage>
 
 
           <Label>Senha</Label>
@@ -114,7 +110,7 @@ export function Register() {
             validIpnut={errors.password?.message}
             type={eyeChange ? 'text' : 'Password'}
             {...register('password')} />
-          <MessageError>{errors.password?.message}</MessageError>
+          <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
 
 
@@ -125,10 +121,10 @@ export function Register() {
             type={eyeChange ? 'text' : 'Password'}
             {...register('passwordConfirm')}
           />
-          <MessageError>{errors.passwordConfirm?.message}</MessageError>
+          <ErrorMessage>{errors.passwordConfirm?.message}</ErrorMessage>
 
 
-          <Button type="submit" style={{ position: 'relative', top: '1em' }}>
+          <Button type="submit" style={{ position: 'relative', top: '0.1em' }}>
             Sign In
           </Button>
         </form>

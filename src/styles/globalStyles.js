@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { createGlobalStyle } from 'styled-components'
 import 'react-toastify/dist/ReactToastify.css'
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 *{

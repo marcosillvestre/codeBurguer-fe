@@ -16,14 +16,11 @@ width: 100vw ;
 background-color: #ffffff ;
 display: flex ;
 justify-content: space-between ;
-padding: 0  5em 0 20em  ;
+padding: 10px 10em 5px 25em  ;
 align-items: center ;
-  font-size: 1.2rem ;
 
 a{
   text-decoration: none ;
-  font-size: 1.2rem ;
-
   &:hover{
     opacity: 0.8 ;
   }
@@ -36,31 +33,14 @@ display: flex ;
 gap: 50px;
 align-items: center ;
 
-a{
-  border: none ;
-  background: none ;
-  font-size: 16px ;
-  color: #9758A6 ;
-  cursor: pointer;
-
-  &:active{
-opacity: 0.6 ;
-  }
-}
-.Names{
+`
+export const Names = styled.div`
   display: flex ;
-  gap: 10px;
-  p{
-  font-size: 0.9rem ;
+  align-items: center ;
+  p{ font-size: 18px ;  margin: 25px;
+  ::first-letter { text-transform: uppercase; }}
 
-  }
-p::first-letter {
-  text-transform: uppercase;
-}
-}
-
-
-
+  a{ font-weight: bold;   color: #9758A6;}
 
 `
 export const LeftContainer = styled.div`
@@ -72,7 +52,7 @@ export const Pagelink = styled.a`
 
     color: ${props => (props?.isActive ? '#9758A6' : '#555555')} ;
     font-weight: ${props => (props?.isActive ? 'bold' : 'light')} ;
-    font-size: 16px;
+    font-size: 18px;
 `
 export const Profile = styled.div`
 border-left: 1px solid #BABABA ;

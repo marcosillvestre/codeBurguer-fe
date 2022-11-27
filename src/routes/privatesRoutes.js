@@ -1,21 +1,22 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
 import { Header } from '../components/Header'
+import allPaths from '../constants/paths'
 
 function PrivateRoutes({ component, isAdmin, ...rest }) {
     const user = localStorage.getItem('codeBurguer:userData')
 
 
     if (!user) {
-        return <Redirect to="/login" />
+        return <Redirect to={allPaths.login} />
     }
 
     if (isAdmin && !JSON.parse(user).data.admins) {
-        return <Redirect to="/" />
+        return <Redirect to={allPaths.home} />
     }
 
     return (
