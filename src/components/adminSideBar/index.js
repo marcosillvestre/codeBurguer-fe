@@ -45,8 +45,8 @@ const Sidebar = ({ path }) => {
                             <MenuItem isActive={path === allPaths.admin}> <HomeIcon /> Pedidos </MenuItem>
                         </ListLink>
 
-                        <ListLink exact to={allPaths.edit} >
-                            <MenuItem isActive={path === allPaths.edit}> <ShoppingCartIcon />Listar pedidos</MenuItem>
+                        <ListLink exact to={allPaths.listProducts} >
+                            <MenuItem isActive={path === allPaths.listProducts}> <ShoppingCartIcon />Listar produtos</MenuItem>
                         </ListLink>
 
                         <ListLink exact to={allPaths.newProduct} >

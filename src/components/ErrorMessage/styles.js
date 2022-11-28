@@ -7,6 +7,6 @@ export const Container = styled.p`
   line-height: 16px;
   color: #cc1717;
   position: relative;
-  top: -35px;
+  top: -25px;
   margin: 5PX ;
 `

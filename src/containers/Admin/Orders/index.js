@@ -29,10 +29,7 @@ function Orders() {
         setFilteredStatus(data)
     }
 
-    const { isFetching } = useQuery('Orders', () => getOrders(),
-        {
-            staleTime: 60000,
-        })
+    const { isFetching } = useQuery('Orders', () => getOrders(),)
 
 
     function createData(orders) {
@@ -61,6 +58,7 @@ function Orders() {
             )
             setFilteredStatus(newFilteredOrders)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [orders])     //dps pegar pra refatorar{ entendi nada }
 
 

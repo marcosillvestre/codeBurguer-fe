@@ -15,10 +15,11 @@ import apiCodeB from '../../../services/api';
 import { ButtonProducts, Container, ContainerItens, Input, Label, LabelUpload, SelectCategory } from './styles';
 
 
-function NewProducts() {
+function EditProducts() {
     const [fileName, setfileName] = useState(false)
     const [categories, setCategories] = useState({})
-    const { push } = useHistory()
+    const { push, location: { state: { product } } } = useHistory()
+    console.log(product)
     const schema = Yup
         .object({
             name:
@@ -81,8 +82,7 @@ function NewProducts() {
         <Container>
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <ContainerItens>
-                    <Label style={{ textAlign: "center", fontSize: "20px" }}>Adicionar</Label>
-
+                    <Label style={{ textAlign: "center", fontSize: "20px" }}> Editar </Label>
                     <Label>Nome</Label>
                     <Input type="text" {...register("name")} validIpnut={errors.name?.message} />
                     <ErrorMessage >{errors.name?.message}</ErrorMessage>
@@ -133,4 +133,4 @@ function NewProducts() {
     )
 }
 
-export default NewProducts
+export default EditProducts

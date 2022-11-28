@@ -6,7 +6,11 @@ import styled from 'styled-components'
 export const Container = styled.div`
     min-height: calc(100vh - 70px) ;
     text-align: center ;
-    width: calc(100vw - 500px);
+    min-width: calc(100vw - 500px);
+    overflow-y: scroll ;
+::-webkit-scrollbar{
+    display: none;
+}
     
 `
 

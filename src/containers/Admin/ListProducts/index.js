@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { useHistory } from 'react-router-dom';
 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
@@ -12,29 +13,32 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+import allPaths from '../../../constants/paths';
 import apiCodeB from '../../../services/api';
 import formatedCurrency from '../../../utils/FormatedCurrency';
 import { ProductImg } from '../Orders/styles';
 import { Container, EditIcon } from './styles';
 
-function EditOrders() {
+function ListProducts() {
   const [products, setProducts] = useState([])
+  const { push } = useHistory()
 
   async function getOrders() {
     const { data } = await apiCodeB.get('products')
     setProducts(data)
 
   }
-  const { isFetching } = useQuery('Products', () => getOrders(),
-    {
-      staleTime: 60000,
-    })
+  const { isFetching } = useQuery('Products', () => getOrders(),)
 
   function checked(isChecked) {
     if (!isChecked) {
       return <DoDisturbIcon />
     }
     return <CheckCircleOutlineIcon />
+  }
+
+  function editProductFunc(product) {
+    push(allPaths.editProduct, { product })
   }
 
   return (
@@ -66,7 +70,7 @@ function EditOrders() {
                 <TableCell>{formatedCurrency(pd.price)}</TableCell>
                 <TableCell>{pd.category.name}</TableCell>
                 <TableCell><ProductImg src={pd.url} alt='imagem-produto' /></TableCell>
-                <TableCell><EditIcon /> </TableCell>
+                <TableCell><EditIcon onClick={() => editProductFunc(pd)} /> </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -82,5 +86,5 @@ function EditOrders() {
 
 
 
-export default EditOrders
+export default ListProducts
 

@@ -7,8 +7,9 @@ const allPaths =
     products: "/produtos",
     cart: "/carrinho",
     admin: "/pedidos",
-    edit: "/listagem-produtos",
-    newProduct: "/novo-produtos"
+    listProducts: "/listagem-produtos",
+    newProduct: "/novo-produto",
+    editProduct: "/editar-produto"
 }
 
 

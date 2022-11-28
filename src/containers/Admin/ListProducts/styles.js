@@ -5,6 +5,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
 width: 90% ;
 height: calc(100vh - 50px) ;
+overflow-y: scroll ;
+::-webkit-scrollbar{
+    display: none;
+}
 `
 
 export const EditIcon = styled(AutoFixNormalIcon)`

@@ -12,5 +12,5 @@ background: #efefef ;
 export const ContainerItens = styled.div`
 width: 100vw;
 height: 100vh ;
-padding: 50px 80px ;
+padding: 40px 80px  30px  80px;
 `

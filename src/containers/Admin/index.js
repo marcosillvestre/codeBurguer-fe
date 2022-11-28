@@ -5,14 +5,14 @@ import PropTypes from 'prop-types'
 
 import Sidebar from '../../components/adminSideBar'
 import allPaths from '../../constants/paths'
-import EditOrders from './EditOrders'
+import EditProducts from './EditProducts'
+import ListProducts from './ListProducts'
 import NewProducts from './NewProducts'
 import Orders from './Orders'
 import { Container, ContainerItens } from './styles'
 
 export function Admin({ match: { path } }) {
 
-    console.log(path)
 
     return (
 
@@ -20,8 +20,10 @@ export function Admin({ match: { path } }) {
             <Sidebar path={path} />
             <ContainerItens>
                 {path === allPaths.admin && <Orders />}
-                {path === allPaths.edit && <EditOrders />}
+                {path === allPaths.listProducts && <ListProducts />}
                 {path === allPaths.newProduct && <NewProducts />}
+
+                {path === allPaths.editProduct && <EditProducts />}
             </ContainerItens>
         </Container>
 
