@@ -29,10 +29,10 @@ export const ContainerItens = styled.main`
     height: 25px;
     width: 25px;
     position: relative;
-    left: 13.7em;
+    left: 11em;
     font-size: 1.2rem;
     color: #ffffff;
-    bottom: ${props => (props.error ? '7.67em' : '6.5em')};
+    bottom: ${props => (props.error ? '7.67em' : '6.8em')};
   }
 `
 export const P = styled.p`

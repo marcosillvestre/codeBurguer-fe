@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   div{
     img{
-      transform: translateX(20px) ;
+      transform: translateX(5px) ;
       z-index: -1 ;
 
     }
@@ -28,14 +28,14 @@ export const ContainerItens = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 58px 50px;
+  padding: 75px 50px;
   div{
     display: flex ;
     justify-content: center ;
+    align-items: center ;
   img {
     width: 350px  ;
     height: 200px;
-    transform: translateX(-4px, -25px)
   }
   }
 
