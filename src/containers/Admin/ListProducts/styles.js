@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
+import DeleteIcon from '@mui/icons-material/Delete';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -16,4 +17,11 @@ export const EditIcon = styled(AutoFixNormalIcon)`
     opacity: 0.8 ;
     cursor: pointer;
 }
-` 
+`
+
+export const TrashIcon = styled(DeleteIcon)`
+&:hover{
+    opacity: 0.8 ;
+    cursor: pointer;
+}
+`

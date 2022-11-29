@@ -20,6 +20,7 @@ function EditProducts() {
     const [categories, setCategories] = useState({})
     const { push, location: { state: { product } } } = useHistory()
     console.log(product)
+
     const schema = Yup
         .object({
             name:
@@ -31,14 +32,6 @@ function EditProducts() {
             category:
                 Yup.object()
                     .required('A categoria é obrigatória'),
-            file:
-                Yup.mixed()
-                    .test('required', 'Você precisa enviar um arquivo', value => {
-                        return value && value?.length > 0
-                    })
-                    .test('fileSize', 'Envie arquivos de no maximo 5mb', value => {
-                        return value && value[0]?.size <= 500000
-                    })
         })
 
     const { register, handleSubmit, control, formState: { errors } } = useForm({
@@ -50,13 +43,13 @@ function EditProducts() {
 
         everyRequest.append('name', data.name)
         everyRequest.append('price', data.price)
-        everyRequest.append('file', data.file[0])
+        everyRequest.append('offer', data.offer)
         everyRequest.append('category_id', data.category.id)
 
-        await toast.promise(apiCodeB.post('products', everyRequest), {
-            pending: 'Enviando o seu produto',
-            success: 'Produto enviado com sucesso',
-            error: 'Falha ao criar produto'
+        await toast.promise(apiCodeB.put(`products/${product.id}`, everyRequest), {
+            pending: 'Editando o seu produto',
+            success: 'Produto editado com sucesso',
+            error: 'Falha ao editar produto'
         })
 
         setTimeout(() => {
@@ -84,11 +77,20 @@ function EditProducts() {
                 <ContainerItens>
                     <Label style={{ textAlign: "center", fontSize: "20px" }}> Editar </Label>
                     <Label>Nome</Label>
-                    <Input type="text" {...register("name")} validIpnut={errors.name?.message} />
+                    <Input
+                        type="text"
+                        {...register("name")}
+                        validIpnut={errors.name?.message}
+                        defaultValue={product.name} />
                     <ErrorMessage >{errors.name?.message}</ErrorMessage>
 
                     <Label>Preço</Label>
-                    <Input type="number" {...register("price")} validIpnut={errors.price?.message} />
+                    <Input
+                        type="number"
+                        {...register("price")}
+                        validIpnut={errors.price?.message}
+                        defaultValue={product.price}
+                    />
                     <ErrorMessage >{errors.price?.message}</ErrorMessage>
 
 
@@ -109,6 +111,7 @@ function EditProducts() {
                     <Controller
                         name="category"
                         control={control}
+                        defaultValue={product.category}
                         render={({ field }) => {
                             return (
                                 <SelectCategory
@@ -117,6 +120,7 @@ function EditProducts() {
                                     getOptionLabel={cat => cat.name}
                                     getOptionValue={cat => cat.id}
                                     placeholder="Categorias"
+                                    defaultValue={product.category}
                                 />
                             )
                         }}
@@ -124,7 +128,12 @@ function EditProducts() {
                     ></Controller>
                     <ErrorMessage >{errors.category?.message}</ErrorMessage>
 
-                    <ButtonProducts type="submit"> Adicionar novo Produto</ButtonProducts>
+                    <Label style={{ display: 'flex', gap: '10px' }}>
+                        <input defaultChecked={product.offer} type='checkbox' {...register("offer")} />
+                        Produto em oferta ?
+                    </Label>
+
+                    <ButtonProducts type="submit"> Salvar Produto</ButtonProducts>
 
                 </ContainerItens>
             </form>

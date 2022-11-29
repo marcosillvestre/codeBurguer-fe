@@ -9,7 +9,8 @@ const allPaths =
     admin: "/pedidos",
     listProducts: "/listagem-produtos",
     newProduct: "/novo-produto",
-    editProduct: "/editar-produto"
+    editProduct: "/editar-produto",
+    deleteProduct: "/deletar-produto"
 }
 
 

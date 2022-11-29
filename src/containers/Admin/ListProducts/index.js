@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
@@ -17,7 +18,7 @@ import allPaths from '../../../constants/paths';
 import apiCodeB from '../../../services/api';
 import formatedCurrency from '../../../utils/FormatedCurrency';
 import { ProductImg } from '../Orders/styles';
-import { Container, EditIcon } from './styles';
+import { Container, EditIcon, TrashIcon } from './styles';
 
 function ListProducts() {
   const [products, setProducts] = useState([])
@@ -32,14 +33,24 @@ function ListProducts() {
 
   function checked(isChecked) {
     if (!isChecked) {
-      return <DoDisturbIcon />
+      return <DoDisturbIcon style={{ color: '#cc1717' }} />
     }
-    return <CheckCircleOutlineIcon />
+    return <CheckCircleOutlineIcon style={{ color: '#228822' }} />
   }
 
   function editProductFunc(product) {
     push(allPaths.editProduct, { product })
   }
+
+  async function deleteProdFunc(product) {
+    await toast.promise(apiCodeB.delete(`products/${product.id}`), {
+      pending: 'Deletando o seu produto',
+      success: 'Produto deletado com sucesso',
+      error: 'Falha ao deletar produto'
+    })
+    console.log(product)
+  }
+
 
   return (
     <Container>
@@ -53,6 +64,7 @@ function ListProducts() {
               <TableCell>Categoria</TableCell>
               <TableCell>Imagem</TableCell>
               <TableCell>Editar</TableCell>
+              <TableCell>Deletar</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -71,6 +83,7 @@ function ListProducts() {
                 <TableCell>{pd.category.name}</TableCell>
                 <TableCell><ProductImg src={pd.url} alt='imagem-produto' /></TableCell>
                 <TableCell><EditIcon onClick={() => editProductFunc(pd)} /> </TableCell>
+                <TableCell><TrashIcon onClick={() => deleteProdFunc(pd)} /> </TableCell>
               </TableRow>
             ))}
           </TableBody>

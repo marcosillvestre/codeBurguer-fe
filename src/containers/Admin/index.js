@@ -13,7 +13,6 @@ import { Container, ContainerItens } from './styles'
 
 export function Admin({ match: { path } }) {
 
-
     return (
 
         <Container>

@@ -18,14 +18,10 @@ function Routes() {
         <PrivateRoutes component={Products} path={allPaths.products} />
         <PrivateRoutes component={Cart} path={allPaths.cart} />
 
-
         <PrivateRoutes component={Admin} path={allPaths.admin} isAdmin />
         <PrivateRoutes component={Admin} path={allPaths.listProducts} isAdmin />
         <PrivateRoutes component={Admin} path={allPaths.newProduct} isAdmin />
         <PrivateRoutes component={Admin} path={allPaths.editProduct} isAdmin />
-
-
-
 
       </Switch>
     </Router>

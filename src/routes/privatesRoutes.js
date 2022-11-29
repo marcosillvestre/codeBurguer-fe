@@ -10,6 +10,7 @@ import allPaths from '../constants/paths'
 function PrivateRoutes({ component, isAdmin, ...rest }) {
     const user = localStorage.getItem('codeBurguer:userData')
 
+    console.log(JSON.parse(user).data.admins)
 
     if (!user) {
         return <Redirect to={allPaths.login} />
